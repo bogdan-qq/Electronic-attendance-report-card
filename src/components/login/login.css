@@ -1,0 +1,130 @@
+/* ===== Контейнер всей страницы ===== */
+.login-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-color: #F0FDF4; /* цвет фона страницы */
+  }
+  
+  /* ===== Карточка ===== */
+  .login-card {
+    width: 550px;
+    height: 540px;
+    border-radius: 24px;
+    background-color: #FAFFF6;
+    border: 3px solid #91C4C8;
+    box-shadow: inset 0 0 0 0 #91C4C8; /* обводка внутри */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-sizing: border-box;
+  }
+  
+  /* ===== Форма внутри карточки ===== */
+  .login-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 30px;
+    width: 100%;
+    padding: 20px;
+  }
+  
+  /* ===== 1. Логотип ===== */
+  .logo {
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    background-color: #56DA5F;
+    box-shadow: 0 0 0 3px rgba(86, 218, 95, 0.25);
+    flex-shrink: 0;
+  }
+  
+  /* ===== 2. Заголовок ===== */
+  .title {
+    font-family: "Inter", sans-serif;
+    font-weight: 600; /* semi bold */
+    font-size: 21px;
+    color: #000000;
+    margin: 0;
+    text-align: center;
+  }
+  
+  /* ===== 3. Подзаголовок ===== */
+  .subtitle {
+    font-family: "Inter", sans-serif;
+    font-weight: 400; /* regular */
+    font-size: 15px;
+    color: #8B8B8B;
+    margin: 0;
+    text-align: center;
+  }
+  
+  /* ===== Группа поле + лейбл ===== */
+  .input-group {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    max-width: 323px;
+    gap: 4px;
+  }
+  
+  /* ===== Лейбл (надпись над полем) ===== */
+  .input-label {
+    font-family: "Inter", sans-serif;
+    font-weight: 400; /* regular */
+    font-size: 17px;
+    color: #000000;
+  }
+  
+  /* ===== Поле ввода ===== */
+  .input-field {
+    width: 100%;
+    height: 50px;
+    padding: 0 16px;
+    border-radius: 24px;
+    border: 1px solid #91C4C8;
+    background-color: #DDFFFF;
+    font-family: "Inter", sans-serif;
+    font-size: 16px;
+    color: #000000;
+    outline: none;
+    box-shadow: 0 10px 30px 0 rgba(221, 255, 255, 1);
+    box-sizing: border-box;
+    transition: border-color 0.2s;
+  }
+  
+  .input-field:focus {
+    border-color: #56DA5F;
+  }
+  
+  /* ===== Кнопка ===== */
+  .login-button {
+    width: 98px;
+    height: 47px;
+    padding: 14px 24px;
+    border-radius: 24px;
+    border: none;
+    background-color: #56DA5F;
+    color: #000000;
+    font-family: "Inter", sans-serif;
+    font-weight: 500; /* medium */
+    font-size: 16px;
+    cursor: pointer;
+    box-shadow: 0 10px 30px 0 rgba(86, 218, 95, 0.25);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    transition: opacity 0.2s, transform 0.1s;
+    flex-shrink: 0;
+  }
+  
+  .login-button:hover {
+    opacity: 0.85;
+  }
+  
+  .login-button:active {
+    transform: scale(0.97);
+  }
