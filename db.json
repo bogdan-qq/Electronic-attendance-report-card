@@ -1,0 +1,276 @@
+{
+    "teachers": [
+      {
+        "id": "1",
+        "login": "teacher1",
+        "password": "teacher123",
+        "fullName": "Смирнов Алексей Владимирович",
+        "role": "teacher"
+      },
+      {
+        "id": "2",
+        "login": "teacher2",
+        "password": "teacher123",
+        "fullName": "Иванова Елена Петровна",
+        "role": "teacher"
+      },
+      {
+        "id": "3",
+        "login": "teacher3",
+        "password": "teacher123",
+        "fullName": "Петров Дмитрий Сергеевич",
+        "role": "teacher"
+      },
+      {
+        "id": "4",
+        "login": "teacher4",
+        "password": "teacher123",
+        "fullName": "Сидорова Ольга Николаевна",
+        "role": "teacher"
+      },
+      {
+        "id": "5",
+        "login": "teacher5",
+        "password": "teacher123",
+        "fullName": "Козлов Андрей Игоревич",
+        "role": "teacher"
+      },
+      {
+        "id": "6",
+        "login": "teacher6",
+        "password": "teacher123",
+        "fullName": "Михайлова Мария Сергеевна",
+        "role": "teacher"
+      },
+      {
+        "id": "7",
+        "login": "teacher7",
+        "password": "teacher123",
+        "fullName": "Николаев Павел Викторович",
+        "role": "teacher"
+      },
+      {
+        "id": "8",
+        "login": "teacher8",
+        "password": "teacher123",
+        "fullName": "Алексеева Анна Дмитриевна",
+        "role": "teacher"
+      },
+      {
+        "id": "9",
+        "login": "teacher9",
+        "password": "teacher123",
+        "fullName": "Дмитриев Илья Александрович",
+        "role": "teacher"
+      },
+      {
+        "id": "10",
+        "login": "teacher10",
+        "password": "teacher123",
+        "fullName": "Григорьева Татьяна Владимировна",
+        "role": "teacher"
+      }
+    ],
+    "students": [
+      {
+        "id": "1",
+        "login": "student1",
+        "password": "student123",
+        "fullName": "Кузнецов Артём Александрович",
+        "groupId": 1,
+        "role": "student"
+      },
+      {
+        "id": "2",
+        "login": "student2",
+        "password": "student123",
+        "fullName": "Соколова Екатерина Дмитриевна",
+        "groupId": 1,
+        "role": "student"
+      },
+      {
+        "id": "3",
+        "login": "student3",
+        "password": "student123",
+        "fullName": "Попов Максим Андреевич",
+        "groupId": 1,
+        "role": "student"
+      },
+      {
+        "id": "4",
+        "login": "student4",
+        "password": "student123",
+        "fullName": "Новикова Анастасия Сергеевна",
+        "groupId": 1,
+        "role": "student"
+      },
+      {
+        "id": "5",
+        "login": "student5",
+        "password": "student123",
+        "fullName": "Морозов Даниил Олегович",
+        "groupId": 2,
+        "role": "student"
+      },
+      {
+        "id": "6",
+        "login": "student6",
+        "password": "student123",
+        "fullName": "Зайцева Дарья Игоревна",
+        "groupId": 2,
+        "role": "student"
+      },
+      {
+        "id": "7",
+        "login": "student7",
+        "password": "student123",
+        "fullName": "Соловьёв Егор Павлович",
+        "groupId": 2,
+        "role": "student"
+      },
+      {
+        "id": "8",
+        "login": "student8",
+        "password": "student123",
+        "fullName": "Крылова София Алексеевна",
+        "groupId": 2,
+        "role": "student"
+      },
+      {
+        "id": "9",
+        "login": "student9",
+        "password": "student123",
+        "fullName": "Громов Никита Михайлович",
+        "groupId": 3,
+        "role": "student"
+      },
+      {
+        "id": "10",
+        "login": "student10",
+        "password": "student123",
+        "fullName": "Михайлова Полина Владимировна",
+        "groupId": 3,
+        "role": "student"
+      },
+      {
+        "id": "11",
+        "login": "student11",
+        "password": "student123",
+        "fullName": "Андреев Денис Александрович",
+        "groupId": 3,
+        "role": "student"
+      },
+      {
+        "id": "12",
+        "login": "student12",
+        "password": "student123",
+        "fullName": "Ковалёва Александра Евгеньевна",
+        "groupId": 3,
+        "role": "student"
+      },
+      {
+        "id": "13",
+        "login": "student13",
+        "password": "student123",
+        "fullName": "Фёдоров Арсений Викторович",
+        "groupId": 4,
+        "role": "student"
+      },
+      {
+        "id": "14",
+        "login": "student14",
+        "password": "student123",
+        "fullName": "Семёнова Вероника Андреевна",
+        "groupId": 4,
+        "role": "student"
+      },
+      {
+        "id": "15",
+        "login": "student15",
+        "password": "student123",
+        "fullName": "Белов Глеб Николаевич",
+        "groupId": 4,
+        "role": "student"
+      },
+      {
+        "id": "16",
+        "login": "student16",
+        "password": "student123",
+        "fullName": "Тихонова Милана Сергеевна",
+        "groupId": 4,
+        "role": "student"
+      },
+      {
+        "id": "17",
+        "login": "student17",
+        "password": "student123",
+        "fullName": "Романов Тимофей Ильич",
+        "groupId": 5,
+        "role": "student"
+      },
+      {
+        "id": "18",
+        "login": "student18",
+        "password": "student123",
+        "fullName": "Казакова Эмилия Павловна",
+        "groupId": 5,
+        "role": "student"
+      },
+      {
+        "id": "19",
+        "login": "student19",
+        "password": "student123",
+        "fullName": "Орлов Александр Владимирович",
+        "groupId": 5,
+        "role": "student"
+      },
+      {
+        "id": "20",
+        "login": "student20",
+        "password": "student123",
+        "fullName": "Гусева Диана Дмитриевна",
+        "groupId": 5,
+        "role": "student"
+      },
+      {
+        "id": "21",
+        "login": "student21",
+        "password": "student123",
+        "fullName": "Колесников Марк Артемьевич",
+        "groupId": 5,
+        "role": "student"
+      },
+      {
+        "id": "22",
+        "login": "student22",
+        "password": "student123",
+        "fullName": "Ершова Ярослава Андреевна",
+        "groupId": 5,
+        "role": "student"
+      },
+      {
+        "id": "23",
+        "login": "student23",
+        "password": "student123",
+        "fullName": "Абрамов Матвей Денисович",
+        "groupId": 5,
+        "role": "student"
+      },
+      {
+        "id": "24",
+        "login": "student24",
+        "password": "student123",
+        "fullName": "Маслова Варвара Михайловна",
+        "groupId": 5,
+        "role": "student"
+      },
+      {
+        "id": "25",
+        "login": "student25",
+        "password": "student123",
+        "fullName": "Никитин Кирилл Витальевич",
+        "groupId": 5,
+        "role": "student"
+      }
+    ]
+  }

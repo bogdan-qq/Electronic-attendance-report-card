@@ -1,0 +1,282 @@
+/* Переменные */
+:root {
+  --фон-кнопки: #56da5f;
+  --фон-поле-ввода: #ddffff;
+  --обводка: #91c4c8;
+  --для-подписи1: #56da5f;
+  --Обводка-подписи1: #42ba4a;
+  --фон-опрос: #fbb93f;
+  --обводка-опрос: #ffa500;
+  --тень-опрос: rgb(251, 185, 63, 0.25);
+  --для-подписи2: #faf325;
+  --обводка-для-подписи2: #f3e017;
+  --обводка-ДДО: #b8b8b8;
+  --тень: rgb(86, 218, 95, 0.25);
+  --тень2: #ddffff;
+  --текст-вайт: #000000;
+  --фон-страницы: #f0fdf4;
+  --фон-карточки: #fafff6;
+  --заголовок: #000000;
+  --подзаголовок: #8b8b8b;
+  --цвет-шапки: #ffffff;
+  --Выход: #ff383c;
+  --тень-выход: rgb(255, 56, 60, 0.25);
+  --тень-карточки: #e5fbd3;
+  --серый: #efecec;
+  --font-family-inter: inter, arial, sans-serif;
+}
+@font-face {
+  font-family: inter;
+  src: url('<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />') format('truetype');
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+/* Базовый сброс стилей */
+* {
+  box-sizing: border-box;
+  scroll-behavior: smooth;
+}
+*::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+*::-webkit-scrollbar-track {
+  background: var(--серый);
+  border-radius: 24px;
+}
+*::-webkit-scrollbar-thumb {
+  background: var(--подзаголовок);
+  border-radius: 24px;
+  cursor: pointer;
+}
+*::-webkit-scrollbar-thumb:hover {
+  background: var(--текст-вайт);
+}
+html,
+body,
+div,
+span,
+applet,
+object,
+iframe,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+a,
+abbr,
+acronym,
+address,
+big,
+cite,
+code,
+del,
+dfn,
+em,
+img,
+ins,
+kbd,
+q,
+s,
+samp,
+small,
+strike,
+strong,
+sub,
+sup,
+tt,
+var,
+b,
+u,
+i,
+center,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+fieldset,
+form,
+label,
+legend,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td,
+article,
+aside,
+canvas,
+details,
+embed,
+figure,
+figcaption,
+footer,
+header,
+hgroup,
+menu,
+nav,
+output,
+ruby,
+section,
+summary,
+time,
+mark,
+audio,
+video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  vertical-align: baseline;
+  color: inherit;
+}
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section {
+  display: block;
+}
+html,
+body,
+#root {
+  height: 100%;
+  overflow: hidden;
+}
+body {
+  line-height: 1;
+  font-family: var(--font-family-inter);
+  background-color: var(--фон-страницы);
+  color: var(--текст-вайт);
+}
+ol,
+ul {
+  list-style: none;
+}
+blockquote,
+q {
+  quotes: none;
+}
+blockquote::before,
+blockquote::after,
+q::before,
+q::after {
+  content: '';
+}
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+a {
+  text-decoration: none;
+  color: inherit;
+}
+button {
+  background: none;
+  padding: 0;
+  cursor: pointer;
+  font: inherit;
+  color: inherit;
+  outline: none;
+  border: none;
+  &:focus-visible {
+      outline: none;
+  }
+}
+svg {
+  flex-shrink: 0;
+}
+input,
+textarea,
+select {
+  font: inherit;
+  outline: none;
+}
+input[type='search']::-webkit-search-cancel-button {
+  appearance: none;
+}
+input[type='search']::-webkit-search-decoration {
+  appearance: none;
+}
+input[type='search']::-moz-search-cancel-button {
+  appearance: none;
+}
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+h1 {
+  /*28px-36px*/
+  font-size: clamp(1.75rem, 1.6286rem + 0.5178vw, 2.25rem);
+  line-height: normal;
+  font-weight: 500;
+}
+h2 {
+  /*22px-26px*/
+  font-size: clamp(1.375rem, 1.3143rem + 0.2589vw, 1.625rem);
+  /*26px-30px*/
+  line-height: clamp(1.625rem, 1.5643rem + 0.2589vw, 1.875rem);
+  font-weight: 600;
+}
+h3 {
+  /*18px-20px*/
+  font-size: clamp(1.125rem, 1.0947rem + 0.1294vw, 1.25rem);
+  /*22px-24px*/
+  line-height: clamp(1.375rem, 1.3447rem + 0.1294vw, 1.5rem);
+  font-weight: 500;
+}
+
+text-title {
+  /*28px-36px*/
+  font-size: clamp(1.75rem, 1.6286rem + 0.5178vw, 2.25rem);
+  line-height: normal;
+  font-weight: 500;
+}
+.text-huge {
+  /*22px-26px*/
+  font-size: clamp(1.375rem, 1.3143rem + 0.2589vw, 1.625rem);
+  /*26px-30px*/
+  line-height: clamp(1.625rem, 1.5643rem + 0.2589vw, 1.875rem);
+  font-weight: 600;
+}
+.text-large {
+  /*18px-20px*/
+  font-size: clamp(1.125rem, 1.0947rem + 0.1294vw, 1.25rem);
+  line-height: normal;
+  font-weight: 400;
+}
+.text-normal {
+  /*15px-16px*/
+  font-size: clamp(0.9375rem, 0.9223rem + 0.0647vw, 1rem);
+  line-height: normal;
+  font-weight: 400;
+}
+.text-small {
+  /*13px-14px*/
+  font-size: clamp(0.8125rem, 0.7973rem + 0.0647vw, 0.875rem);
+  line-height: normal;
+  font-weight: 400;
+}
+.text-label {
+  font-size: 12px;
+  line-height: normal;
+  font-weight: 400;
+}
+
