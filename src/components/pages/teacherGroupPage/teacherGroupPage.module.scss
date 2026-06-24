@@ -8,7 +8,6 @@
   font-family: 'Inter', Arial, sans-serif;
 }
 
-// ===== Шапка =====
 .header {
   display: flex;
   justify-content: space-between;
@@ -118,7 +117,6 @@
   }
 }
 
-// ===== Основной контент =====
 .mainContent {
   flex: 1;
   padding: 30px 60px 40px;
@@ -132,7 +130,6 @@
   width: 100%;
 }
 
-// ===== Фильтры =====
 .filters {
   display: flex;
   flex-wrap: wrap;
@@ -177,7 +174,6 @@
   }
 }
 
-// ===== Дата пикер =====
 .datePickerWrapper {
   position: relative;
 }
@@ -202,7 +198,6 @@
   }
 }
 
-// ===== Календарь =====
 .calendarDropdown {
   position: absolute;
   top: 100%;
@@ -246,7 +241,6 @@
   display: grid;
   grid-template-columns: repeat(7, 1fr);
   gap: 4px;
-  margin-bottom: 16px;
 }
 
 .calendarDayName {
@@ -284,48 +278,6 @@
   }
 }
 
-.calendarActions {
-  display: flex;
-  justify-content: flex-end;
-  gap: 12px;
-  border-top: 1px solid #e8ece8;
-  padding-top: 16px;
-}
-
-.calendarActionBack {
-  padding: 6px 16px;
-  border-radius: 12px;
-  border: 1px solid #91c4c8;
-  background-color: transparent;
-  color: #000000;
-  font-family: 'Inter', Arial, sans-serif;
-  font-weight: 400;
-  font-size: 13px;
-  cursor: pointer;
-
-  &:hover {
-    background-color: #f0fdf4;
-  }
-}
-
-.calendarActionSelect {
-  padding: 6px 16px;
-  border-radius: 12px;
-  border: none;
-  background-color: #56da5f;
-  color: #000000;
-  font-family: 'Inter', Arial, sans-serif;
-  font-weight: 500;
-  font-size: 13px;
-  cursor: pointer;
-  box-shadow: 0 4px 20px rgba(86, 218, 95, 0.25);
-
-  &:hover {
-    opacity: 0.85;
-  }
-}
-
-// ===== Выбор дисциплины =====
 .disciplineSelect {
   padding: 8px 16px;
   border-radius: 24px;
@@ -352,26 +304,50 @@
   }
 }
 
-// ===== Кнопки =====
 .startPollButton {
   padding: 10px 24px;
   border-radius: 24px;
-  border: 3px solid #56da5f;
-  background-color: #56da5f;
+  border: 3px solid #fbb93f;
+  background-color: #fbb93f;
   color: #000000;
   font-family: 'Inter', Arial, sans-serif;
   font-weight: 500;
   font-size: 16px;
   cursor: pointer;
   transition: all 0.2s;
-  box-shadow: 0 4px 20px rgba(86, 218, 95, 0.25);
+  box-shadow: 0 10px 30px 0 rgba(251, 185, 63, 0.25);
 
-  &:hover {
+  &:hover:not(:disabled) {
     opacity: 0.85;
+    transform: translateY(-2px);
   }
 
-  &:active {
+  &:active:not(:disabled) {
     transform: scale(0.95);
+  }
+
+  &:disabled {
+    opacity: 0.7;
+    cursor: not-allowed;
+  }
+
+  &.pollActive {
+    background-color: #ff6b6b;
+    border-color: #ff6b6b;
+    box-shadow: 0 10px 30px 0 rgba(255, 107, 107, 0.25);
+    animation: pulse 1.5s infinite;
+  }
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.02);
+  }
+  100% {
+    transform: scale(1);
   }
 }
 
@@ -398,7 +374,6 @@
   }
 }
 
-// ===== Таблица =====
 .tableWrapper {
   background-color: #ffffff;
   border-radius: 16px;
@@ -450,7 +425,7 @@
   }
 }
 
-.statusSelect {
+.gradeSelect {
   padding: 4px 12px;
   border-radius: 12px;
   border: 2px solid #91c4c8;
@@ -465,6 +440,7 @@
   background-image: url("data:image/svg+xml,%3Csvg width='16' height='16' viewBox='0 0 24 24' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M7 10L12 15L17 10' stroke='%23000' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
   background-repeat: no-repeat;
   background-position: right 8px center;
+  width: 60px;
 
   &:hover {
     border-color: #56da5f;
@@ -476,7 +452,68 @@
   }
 }
 
-// ===== Адаптив =====
+.statusBadge {
+  display: inline-block;
+  padding: 4px 12px;
+  border-radius: 12px;
+  font-size: 13px;
+  font-weight: 500;
+}
+
+.statusPresent {
+  background-color: #e8f5e9;
+  color: #2e7d32;
+}
+
+.statusAbsent {
+  background-color: #ffebee;
+  color: #c62828;
+}
+
+.saveWrapper {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 20px;
+}
+
+.saveButton {
+  padding: 12px 32px;
+  border-radius: 24px;
+  border: none;
+  background-color: #56da5f;
+  color: #000000;
+  font-family: 'Inter', Arial, sans-serif;
+  font-weight: 600;
+  font-size: 16px;
+  cursor: pointer;
+  transition: all 0.2s;
+  box-shadow: 0 10px 30px 0 rgba(86, 218, 95, 0.25);
+
+  &:hover:not(:disabled) {
+    opacity: 0.85;
+    transform: translateY(-2px);
+  }
+
+  &:active:not(:disabled) {
+    transform: scale(0.97);
+  }
+
+  &:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+  }
+}
+
+.loading {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  font-family: 'Inter', Arial, sans-serif;
+  font-size: 18px;
+  color: #8b8b8b;
+}
+
 @media (max-width: 768px) {
   .header {
     padding: 15px 20px;
@@ -538,6 +575,10 @@
     transform: translateX(-50%);
     width: 280px;
   }
+
+  .gradeSelect {
+    width: 50px;
+  }
 }
 
 @media (max-width: 480px) {
@@ -591,5 +632,16 @@
 
   .calendarDay {
     font-size: 12px;
+  }
+
+  .gradeSelect {
+    width: 44px;
+    font-size: 12px;
+    padding: 4px 8px;
+  }
+
+  .saveButton {
+    padding: 10px 20px;
+    font-size: 14px;
   }
 }

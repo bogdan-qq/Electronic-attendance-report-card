@@ -8,7 +8,6 @@
   font-family: 'Inter', Arial, sans-serif;
 }
 
-// ===== Шапка =====
 .header {
   display: flex;
   justify-content: space-between;
@@ -118,7 +117,6 @@
   }
 }
 
-// ===== Основной контент =====
 .mainContent {
   flex: 1;
   padding: 40px 60px;
@@ -140,12 +138,35 @@
   margin: 0 0 30px 0;
 }
 
-// ===== Таблица =====
 .tableWrapper {
   background-color: #ffffff;
   border-radius: 16px;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
   overflow: hidden;
+}
+
+.tableScroll {
+  max-height: 450px;
+  overflow-y: auto;
+  overflow-x: hidden;
+
+  &::-webkit-scrollbar {
+    width: 6px;
+  }
+
+  &::-webkit-scrollbar-track {
+    background: #f0fdf4;
+    border-radius: 8px;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: #91c4c8;
+    border-radius: 8px;
+
+    &:hover {
+      background: #56da5f;
+    }
+  }
 }
 
 .attendanceTable {
@@ -166,6 +187,10 @@
       border-bottom: 2px solid #91c4c8;
       text-transform: uppercase;
       letter-spacing: 0.5px;
+      position: sticky;
+      top: 0;
+      background-color: #f8faf8;
+      z-index: 2;
     }
 
     th:first-child {
@@ -227,10 +252,6 @@
   color: #c62828;
 }
 
-.markColumn {
-  text-align: left;
-}
-
 .markButton {
   padding: 6px 16px;
   border-radius: 20px;
@@ -244,12 +265,17 @@
   transition: opacity 0.2s, transform 0.1s;
   box-shadow: 0 10px 30px 0 rgba(86, 218, 95, 0.25);
 
-  &:hover {
+  &:hover:not(:disabled) {
     opacity: 0.85;
   }
 
-  &:active {
+  &:active:not(:disabled) {
     transform: scale(0.95);
+  }
+
+  &:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
   }
 }
 
@@ -257,9 +283,152 @@
   background-color: #ff383c;
   color: #ffffff;
   box-shadow: 0 10px 30px 0 rgba(255, 56, 60, 0.25);
+
+  &:hover:not(:disabled) {
+    opacity: 0.85;
+  }
+
+  &:active:not(:disabled) {
+    transform: scale(0.95);
+  }
+
+  &:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+  }
 }
 
-// ===== Адаптив =====
+.pollNotification {
+  position: fixed;
+  top: 100px;
+  right: 20px;
+  max-width: 420px;
+  background: #ffffff;
+  border-radius: 16px;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
+  padding: 16px 20px;
+  padding-right: 48px;
+  z-index: 1000;
+  border-left: 4px solid #fbb93f;
+  animation: slideIn 0.3s ease;
+
+  &.marked {
+    border-left-color: #56da5f;
+  }
+}
+
+.notificationClose {
+  position: absolute;
+  top: 10px;
+  right: 12px;
+  background: none;
+  border: none;
+  font-size: 18px;
+  color: #8b8b8b;
+  cursor: pointer;
+  padding: 4px 8px;
+  border-radius: 50%;
+  transition: all 0.2s;
+  line-height: 1;
+
+  &:hover {
+    background-color: #f0f0f0;
+    color: #000000;
+  }
+}
+
+.pollContent {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.pollIcon {
+  font-size: 32px;
+  flex-shrink: 0;
+}
+
+.pollMessage {
+  flex: 1;
+}
+
+.pollTitle {
+  font-family: 'Inter', Arial, sans-serif;
+  font-weight: 600;
+  font-size: 16px;
+  color: #000000;
+}
+
+.pollSubtitle {
+  font-family: 'Inter', Arial, sans-serif;
+  font-weight: 400;
+  font-size: 14px;
+  color: #8b8b8b;
+}
+
+.pollButton {
+  padding: 8px 20px;
+  border-radius: 24px;
+  border: none;
+  background-color: #56da5f;
+  color: #000000;
+  font-family: 'Inter', Arial, sans-serif;
+  font-weight: 500;
+  font-size: 14px;
+  cursor: pointer;
+  transition: all 0.2s;
+  flex-shrink: 0;
+
+  &:hover {
+    opacity: 0.85;
+    transform: scale(1.02);
+  }
+
+  &:active {
+    transform: scale(0.95);
+  }
+}
+
+.markedStatus {
+  font-family: 'Inter', Arial, sans-serif;
+  font-weight: 500;
+  font-size: 14px;
+  padding: 8px 16px;
+  border-radius: 12px;
+  flex-shrink: 0;
+  color: #2e7d32;
+}
+
+.noData {
+  text-align: center;
+  padding: 40px !important;
+  color: #8b8b8b;
+  font-family: 'Inter', Arial, sans-serif;
+  font-weight: 400;
+  font-size: 16px;
+}
+
+.loading {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  font-family: 'Inter', Arial, sans-serif;
+  font-size: 18px;
+  color: #8b8b8b;
+}
+
+@keyframes slideIn {
+  from {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
 @media (max-width: 768px) {
   .header {
     padding: 15px 20px;
@@ -288,8 +457,8 @@
     padding: 20px;
   }
 
-  .tableWrapper {
-    overflow-x: auto;
+  .tableScroll {
+    max-height: 350px;
   }
 
   .attendanceTable {
@@ -321,6 +490,27 @@
   .disciplineTitle {
     font-size: 20px;
   }
+
+  .pollNotification {
+    top: auto;
+    bottom: 20px;
+    right: 20px;
+    left: 20px;
+    max-width: none;
+    border-radius: 12px;
+    padding: 14px 16px;
+    padding-right: 44px;
+  }
+
+  .pollContent {
+    gap: 12px;
+    flex-wrap: wrap;
+  }
+
+  .pollButton {
+    width: 100%;
+    justify-content: center;
+  }
 }
 
 @media (max-width: 480px) {
@@ -350,6 +540,10 @@
     font-size: 14px;
   }
 
+  .tableScroll {
+    max-height: 280px;
+  }
+
   .attendanceTable {
     font-size: 12px;
 
@@ -362,5 +556,41 @@
   .markButton {
     padding: 4px 12px;
     font-size: 12px;
+  }
+
+  .pollNotification {
+    padding: 12px 14px;
+    padding-right: 40px;
+    bottom: 10px;
+    right: 10px;
+    left: 10px;
+  }
+
+  .pollIcon {
+    font-size: 24px;
+  }
+
+  .pollTitle {
+    font-size: 14px;
+  }
+
+  .pollSubtitle {
+    font-size: 12px;
+  }
+
+  .pollButton {
+    font-size: 13px;
+    padding: 6px 16px;
+  }
+
+  .markedStatus {
+    font-size: 12px;
+    padding: 6px 12px;
+  }
+
+  .notificationClose {
+    font-size: 16px;
+    top: 8px;
+    right: 10px;
   }
 }

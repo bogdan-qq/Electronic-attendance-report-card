@@ -2,11 +2,13 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { getUser, clearAuth } from '../../../utils/auth';
+import { pollService } from '../../../services/pollService';
 import styles from './mainStudent.module.scss';
 
 interface Student {
   id: string;
   login: string;
+  password: string;
   fullName: string;
   groupId: number;
   role: string;
@@ -23,6 +25,19 @@ const MainStudent: React.FC = () => {
   const [user, setUser] = useState<Student | null>(null);
   const [disciplines, setDisciplines] = useState<Discipline[]>([]);
   const [loading, setLoading] = useState(true);
+  const [pollNotification, setPollNotification] = useState<{
+    show: boolean;
+    disciplineName: string;
+    remainingTime: number;
+    isActive: boolean;
+    isMarked: boolean;
+  }>({
+    show: false,
+    disciplineName: '',
+    remainingTime: 0,
+    isActive: false,
+    isMarked: false,
+  });
 
   useEffect(() => {
     const userData = getUser();
@@ -49,6 +64,32 @@ const MainStudent: React.FC = () => {
     fetchDisciplines();
   }, []);
 
+  useEffect(() => {
+    const checkPoll = () => {
+      const poll = pollService.getActivePoll();
+      if (poll && poll.isActive && user) {
+        const remaining = Math.max(0, Math.floor((poll.endTime - Date.now()) / 1000));
+        const isMarked = pollService.isStudentMarked(user.id);
+        setPollNotification({
+          show: true,
+          disciplineName: poll.disciplineName,
+          remainingTime: remaining,
+          isActive: remaining > 0,
+          isMarked,
+        });
+      } else {
+        setPollNotification((prev) => ({
+          ...prev,
+          show: false,
+        }));
+      }
+    };
+
+    checkPoll();
+    const interval = setInterval(checkPoll, 1000);
+    return () => clearInterval(interval);
+  }, [user]);
+
   const handleLogout = () => {
     clearAuth();
     navigate('/login');
@@ -58,13 +99,63 @@ const MainStudent: React.FC = () => {
     navigate(`/student/discipline/${disciplineId}`);
   };
 
+  const handleMarkAttendance = () => {
+    if (!user) return;
+    const success = pollService.markStudent(user.id);
+    if (success) {
+      setPollNotification((prev) => ({
+        ...prev,
+        isMarked: true,
+      }));
+      alert('Вы успешно отметились!');
+    } else {
+      alert('Опрос уже завершён!');
+    }
+  };
+
+  const formatTime = (seconds: number): string => {
+    const mins = Math.floor(seconds / 60);
+    const secs = seconds % 60;
+    return `${String(mins).padStart(2, '0')}:${String(secs).padStart(2, '0')}`;
+  };
+
   if (loading) {
     return <div className={styles.loading}>Загрузка...</div>;
   }
 
   return (
     <div className={styles.studentContainer}>
-      {/* Шапка */}
+      {pollNotification.show && pollNotification.isActive && (
+        <div className={`${styles.pollNotification} ${pollNotification.isMarked ? styles.marked : ''}`}>
+          <div className={styles.pollContent}>
+            <div className={styles.pollIcon}>
+              {pollNotification.isMarked ? '✅' : '🔔'}
+            </div>
+            <div className={styles.pollMessage}>
+              <div className={styles.pollTitle}>
+                {pollNotification.isMarked
+                  ? 'Вы отметились на опросе!'
+                  : 'Преподаватель начал опрос присутствия!'}
+              </div>
+              <div className={styles.pollSubtitle}>
+                Дисциплина: {pollNotification.disciplineName}
+              </div>
+              <div className={styles.pollTimer}>
+                ⏱ Осталось: {formatTime(pollNotification.remainingTime)}
+              </div>
+            </div>
+            {!pollNotification.isMarked && pollNotification.isActive && (
+              <button className={styles.pollButton} onClick={handleMarkAttendance}>
+                Отметиться
+              </button>
+            )}
+            {pollNotification.isMarked && (
+              <div className={styles.markedStatus}>✅ Отмечен</div>
+            )}
+          </div>
+        </div>
+      )}
+
       <header className={styles.header}>
         <div className={styles.headerLeft}>
           <div className={styles.logo}></div>
@@ -73,7 +164,6 @@ const MainStudent: React.FC = () => {
             <span className={styles.pageSubtitle}>Выбор дисциплины</span>
           </div>
         </div>
-
         <div className={styles.headerRight}>
           <div className={styles.userInfo}>
             <span className={styles.userName}>{user?.fullName || 'Пользователь'}</span>
@@ -85,7 +175,6 @@ const MainStudent: React.FC = () => {
         </div>
       </header>
 
-      {/* Основной контент */}
       <main className={styles.mainContent}>
         <div className={styles.disciplinesGrid}>
           {disciplines.length > 0 ? (
